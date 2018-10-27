@@ -475,7 +475,7 @@ export default function link(scope, elem, attrs, ctrl) {
 
   function formatValue(value) {
     if (typeof value.toFixed !== 'undefined') {
-      return value.toFixed(5);
+      return value.toFixed(panel.tooltipPrecision);
     } else {
       return value;
     }
