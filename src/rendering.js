@@ -456,7 +456,7 @@ export default function link(scope, elem, attrs, ctrl) {
         } else {
           value = data[j].datapoints[i][0];
         }
-        body += seriesItem(data[j].alias, formatValue(value), data[j].color, true);
+        body += seriesItem(data[j].alias, formatOtherValue(value), data[j].color, true);
       }
     }
 
@@ -479,6 +479,10 @@ export default function link(scope, elem, attrs, ctrl) {
     } else {
       return value;
     }
+  }
+
+  function formatOtherValue(value) {
+    return value;
   }
 
   function newDrawCandlestick(ctx, serie, data, hover) {
