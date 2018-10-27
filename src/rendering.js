@@ -474,26 +474,11 @@ export default function link(scope, elem, attrs, ctrl) {
   }
 
   function formatValue(value) {
-    switch (true) {
-      case (value >= 100):
-        return data[0].formatValue(value);
-      case (value >= 1):
-        return Math.round(value * 1000) / 1000;
-      case (value > 0.1):
-        return Math.round(value * 10000) / 10000;
-      case (value > 0.01):
-        return Math.round(value * 100000) / 100000;
-      case (value > 0.001):
-        return Math.round(value * 1000000) / 1000000;
-      case (value > 0.0001):
-        return Math.round(value * 10000000) / 10000000;
-      case (value > 0.00001):
-        return Math.round(value * 100000000) / 100000000;
-      case (value > 0.000001):
-        return Math.round(value * 1000000000) / 1000000000;
+    if (typeof value.toFixed !== 'undefined') {
+      return value.toFixed(5);
+    } else {
+      return value;
     }
-
-    return value;
   }
 
   function newDrawCandlestick(ctx, serie, data, hover) {
